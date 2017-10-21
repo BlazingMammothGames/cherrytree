@@ -1,5 +1,0 @@
-# @install: lix --silent download "https://github.com/fponticelli/thx.color/archive/15e2805f81ffb7f389b0c3b67c5cf85a5efb50da.tar.gz" into thx.color/0.19.1/github/15e2805f81ffb7f389b0c3b67c5cf85a5efb50da
--D thx.color=0.19.1
--cp ${HAXESHIM_LIBCACHE}/thx.color/0.19.1/github/15e2805f81ffb7f389b0c3b67c5cf85a5efb50da/src
-
--lib thx.core
