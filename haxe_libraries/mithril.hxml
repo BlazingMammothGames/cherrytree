@@ -1,0 +1,6 @@
+# @install: lix --silent download "https://github.com/ciscoheat/mithril-hx/archive/99c66caeb9eba9f58b2938e5a84a1aa0a1ced538.tar.gz" into mithril/0.0.0/github/99c66caeb9eba9f58b2938e5a84a1aa0a1ced538
+-D mithril=0.0.0
+-cp ${HAXESHIM_LIBCACHE}/mithril/0.0.0/github/99c66caeb9eba9f58b2938e5a84a1aa0a1ced538/src
+
+-lib slambda
+-lib buddy

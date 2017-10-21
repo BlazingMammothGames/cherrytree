@@ -1,0 +1,3 @@
+# @install: lix --silent download "haxelib:slambda#0.8.5" into slambda/0.8.5/haxelib
+-D slambda=0.8.5
+-cp ${HAXESHIM_LIBCACHE}/slambda/0.8.5/haxelib/

@@ -1,0 +1,13 @@
+.display {
+    font-family: monospace;
+    width: 80ch;
+    word-wrap: break-word;
+}
+
+.bg-black {
+    background: #000;
+}
+
+.fg-grey {
+    color: #ccc;
+}
