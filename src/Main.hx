@@ -1,10 +1,7 @@
-import mithril.M;
 import renderer.Renderer;
-import types.DrawBuffer;
 import types.KeyCode;
 
 class Main {
-    public static var buffer:DrawBuffer = [for(i in 0...(80 * 25)) '.'];
     private static var x:Int = 0;
     private static var y:Int = 0;
 
@@ -13,22 +10,24 @@ class Main {
     }
 
     public static function main() {
-        /*haxe.Timer.measure(function() {
-            M.mount(js.Browser.window.document.body, new Renderer());
-        });*/
-        M.mount(js.Browser.window.document.body, new Renderer());
+        var renderer:Renderer;
+        haxe.Timer.measure(function() {
+            renderer = new Renderer();
+        });
+        renderer.rerender(x, y, '#');
 
         js.Browser.window.addEventListener('keydown', function(e:js.html.KeyboardEvent) {
-            var key:KeyCode = e.keyCode;
-            buffer[coordsToIndex(x, y)] = '.';
-            switch(key) {
-                case ArrowUp: y--;
-                case ArrowRight: x++;
-                case ArrowDown: y++;
-                case ArrowLeft: x--;
-            }
-            buffer[coordsToIndex(x, y)] = '#';
-            M.redraw();
+            haxe.Timer.measure(function() {
+                var key:KeyCode = e.keyCode;
+                renderer.rerender(x, y, '.');
+                switch(key) {
+                    case ArrowUp: y--;
+                    case ArrowRight: x++;
+                    case ArrowDown: y++;
+                    case ArrowLeft: x--;
+                }
+                renderer.rerender(x, y, '#');
+            });
         });
 
         /*var t:haxe.Timer = new haxe.Timer(1000);

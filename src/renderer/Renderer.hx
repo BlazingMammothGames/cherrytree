@@ -1,13 +1,31 @@
 package renderer;
 
-import renderer.components.Display;
+import js.html.DivElement;
+import js.html.SpanElement;
+import types.Glyph;
 
-import mithril.M;
+class Renderer {
+    private var canvas:DivElement;
+    private var chars:Array<SpanElement>;
 
-class Renderer implements Mithril {
-    public function new(){}
+    public function new() {
+        var canvas:DivElement = js.Browser.document.createDivElement();
+        canvas.classList.add('display');
+        chars = [
+            for(i in 0...(80*25)) {
+                var char:SpanElement = js.Browser.document.createSpanElement();
+                char.className = 'fg-white bg-black';
+                char.innerText = '.';
+                canvas.appendChild(char);
+                char;
+            }
+        ];
+        js.Browser.document.body.appendChild(canvas);
+    }
 
-    public function view(vnode:Vnode<Renderer>):Vnodes {
-        return m(Display, { buffer: Main.buffer });
+    public function rerender(x:Int, y:Int, g:Glyph):Void {
+        var char:SpanElement = chars[y*80+x];
+        char.innerHTML = g.char;
+        char.className = 'fg-${g.fg} bg-${g.bg}';
     }
 }

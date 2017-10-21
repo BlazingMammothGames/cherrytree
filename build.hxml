@@ -3,6 +3,4 @@
 
 -debug
 
--lib mithril
-
 -js public/cherrytree.js
