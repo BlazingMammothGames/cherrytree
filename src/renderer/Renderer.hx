@@ -15,7 +15,7 @@ class Renderer {
             for(i in 0...(80*25)) {
                 var char:SpanElement = js.Browser.document.createSpanElement();
                 char.className = 'fg-white bg-black';
-                char.innerText = '.';
+                char.textContent = '\u00a0';
                 canvas.appendChild(char);
                 char;
             }
@@ -25,7 +25,7 @@ class Renderer {
 
     public function rerender(x:Int, y:Int, g:Glyph):Void {
         var char:SpanElement = chars[y*80+x];
-        char.innerHTML = g.char;
-        char.className = 'fg-${g.fg} bg-${g.bg}';
+        char.childNodes[0].nodeValue = g.char;//g.char;
+        //char.className = 'fg-${g.fg} bg-${g.bg}';
     }
 }
