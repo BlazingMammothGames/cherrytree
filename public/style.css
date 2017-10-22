@@ -1,17 +1,75 @@
-.display {
+body {
+    background: black;
+    color: grey;
     font-family: monospace;
-    width: 80ch;
-    word-wrap: break-word;
+    text-align: center;
+}
+
+.display {
+    font-family: 'Source Code Pro', monospace;
+    display: inline-block;
+    margin-top: 2em;
+    padding: 0.5em;
+    background: #000;
+    border: solid 1px #333;
+}
+
+.line {
+    display: block;
 }
 
 .bg-black {
-    background: #000;
+    background: black;
+}
+.bg-red {
+    background: red;
+}
+.bg-green {
+    background: green;
+}
+.bg-yellow {
+    background: yellow;
+}
+.bg-blue {
+    background: blue;
+}
+.bg-magenta {
+    background: magenta;
+}
+.bg-cyan {
+    background: cyan;
+}
+.bg-white {
+    background: white;
+}
+.bg-grey {
+    background: grey;
 }
 
-.fg-grey {
-    color: #ccc;
+.fg-black {
+    color: black;
 }
-
+.fg-red {
+    color: red;
+}
+.fg-green {
+    color: green;
+}
+.fg-yellow {
+    color: yellow;
+}
+.fg-blue {
+    color: blue;
+}
+.fg-magenta {
+    color: magenta;
+}
+.fg-cyan {
+    color: cyan;
+}
 .fg-white {
-    color: #fff;
+    color: white;
+}
+.fg-grey {
+    color: grey;
 }

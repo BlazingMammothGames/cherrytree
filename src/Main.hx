@@ -1,5 +1,6 @@
+import types.Glyph;
+import types.Colour;
 import renderer.Renderer;
-import types.KeyCode;
 
 class Main {
     private static var x:Int = 0;
@@ -24,18 +25,28 @@ class Main {
     }
 
     inline static function randomChar():String {
-        return ' .:!0#'.charAt(Math.floor(Math.random() * 6));
+        return ' .:!0#/%^*@$-+='.charAt(Math.floor(Math.random() * 15));
+    }
+
+    inline static function randomColour():Colour {
+        var colours:Array<Colour> = macros.AbstractEnumTools.getValues(Colour);
+        return colours[Math.floor(Math.random() * colours.length)];
     }
 
     static function render(dt:Float):Void {
         var now:Float = haxe.Timer.stamp();
-        for(y in 0...25) for(x in 0...80) renderer.rerender(x, y, randomChar());
+        for(y in 0...25) for(x in 0...80) renderer.draw(x, 0, new Glyph({
+            char: randomChar(),
+            fg: randomColour(),
+            bg: Colour.Black
+        }));
 
         var d = now - lastTime;
         var f = d > 0 ? 1.0 / d : 0;
         lastTime = now;
         fps.childNodes[0].nodeValue = Std.string(f);
 
-        js.Browser.window.requestAnimationFrame(render);
+        renderer.render();
+        //js.Browser.window.requestAnimationFrame(render);
     }
 }
