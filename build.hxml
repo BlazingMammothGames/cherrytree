@@ -3,4 +3,6 @@
 
 -debug
 
+-lib vellum
+
 -js public/cherrytree.js

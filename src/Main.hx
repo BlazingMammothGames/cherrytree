@@ -30,6 +30,7 @@ class Main {
     static function render(dt:Float):Void {
         var now:Float = haxe.Timer.stamp();
         for(y in 0...25) for(x in 0...80) renderer.rerender(x, y, randomChar());
+        renderer.render();
 
         var d = now - lastTime;
         var f = d > 0 ? 1.0 / d : 0;

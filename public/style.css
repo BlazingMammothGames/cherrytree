@@ -1,4 +1,4 @@
-.display {
+/*.display {
     font-family: monospace;
     width: 80ch;
     word-wrap: break-word;
@@ -14,4 +14,18 @@
 
 .fg-white {
     color: #fff;
+}*/
+
+
+body {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+}
+canvas {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 4px;
+    background: #000;
+    border: solid 1px #333;
 }
