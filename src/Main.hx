@@ -9,6 +9,8 @@ class Main {
     private static var fps:js.html.DivElement;
     private static var lastTime:Float;
 
+    static var update:haxe.Timer;
+
     inline private static function coordsToIndex(x:Int, y:Int):Int {
         return (y*80)+x;
     }
@@ -21,24 +23,31 @@ class Main {
         js.Browser.document.body.appendChild(fps);
 
         lastTime = haxe.Timer.stamp();
-        js.Browser.window.requestAnimationFrame(render);
+        //js.Browser.window.requestAnimationFrame(render);
+        update = new haxe.Timer(100);
+        update.run = render;
     }
 
     inline static function randomChar():String {
         return ' .:!0#/%^*@$-+='.charAt(Math.floor(Math.random() * 15));
     }
 
-    inline static function randomColour():Colour {
-        var colours:Array<Colour> = macros.AbstractEnumTools.getValues(Colour);
+    inline static function randomFGColour():FGColour {
+        var colours:Array<FGColour> = macros.AbstractEnumTools.getValues(FGColour);
         return colours[Math.floor(Math.random() * colours.length)];
     }
 
-    static function render(dt:Float):Void {
+    inline static function randomBGColour():BGColour {
+        var colours:Array<BGColour> = macros.AbstractEnumTools.getValues(BGColour);
+        return colours[Math.floor(Math.random() * colours.length)];
+    }
+
+    static function render():Void {
         var now:Float = haxe.Timer.stamp();
-        for(y in 0...25) for(x in 0...80) renderer.draw(x, 0, new Glyph({
+        for(y in 0...25) for(x in 0...80) renderer.draw(x, y, new Glyph({
             char: randomChar(),
-            fg: randomColour(),
-            bg: Colour.Black
+            fg: randomFGColour(),
+            bg: randomBGColour()
         }));
 
         var d = now - lastTime;

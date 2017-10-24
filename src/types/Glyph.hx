@@ -1,9 +1,11 @@
 package types;
 
+import types.Colour;
+
 typedef GlyphObject = {
     var char:String;
-    var bg:Colour;
-    var fg:Colour;
+    var bg:BGColour;
+    var fg:FGColour;
 }
 
 @:forward abstract Glyph(GlyphObject) from GlyphObject to GlyphObject {
@@ -15,7 +17,7 @@ typedef GlyphObject = {
     @:from public static function fromString(s:String):Glyph
         return new Glyph({
             char: s,
-            bg:Colour.Black,
-            fg:Colour.Grey
+            bg: BGColour.Black,
+            fg: FGColour.BrightBlack
         });
 }
